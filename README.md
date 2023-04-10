@@ -25,12 +25,12 @@ List the technologies used in the project here.
 
 ## Critical Path/Milestones
 
-| Milestone | Description | Expected Completion Date |
-| --- | --- | --- |
-| Milestone 1 | Briefly describe the milestone | DD/MM/YYYY |
-| Milestone 2 | Briefly describe the milestone | DD/MM/YYYY |
-| Milestone 3 | Briefly describe the milestone | DD/MM/YYYY |
-| Milestone 4 | Briefly describe the milestone | DD/MM/YYYY |
+| Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
+| --- | --- | --- | --- |
+| Sprint 1 Milestone 1 | Sprint 2 Milestone 1  | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
+| Sprint 1 Milestone 2 | Sprint 2 Milestone 2  | Sprint 3 Milestone 2  | Sprint 4 Milestone 2 |
+| Sprint 1 Milestone 3 | Sprint 2 Milestone 3  | Sprint 3 Milestone 3  | Sprint 4 Milestone 3 |
+
 
 
 
