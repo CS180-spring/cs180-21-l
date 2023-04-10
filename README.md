@@ -7,6 +7,14 @@
 
 The system will consist of a database of movies, and perhaps eventually TV shows. In addition to the movie title and rating, the database will include the cast, genre, as well as director. Users will be able to manipulate the database to view fields they find relevant.
 
+## Team Members
+
+- Brian Porter
+- Nicky Lin
+- Johnny To
+- Ryan
+- Ian
+
 ## Objectives
 
 - Create a database from scratch that is able to do basic CRUD Operations.
