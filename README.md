@@ -36,6 +36,7 @@ The system will consist of a database of movies, and perhaps eventually TV shows
 | Sprint 1 Milestone 3 | Sprint 2 Milestone 3  | Sprint 3 Milestone 3  | Sprint 4 Milestone 3 |
 
 ## Burndown Chart
+
 ![Burndown Chart](https://user-images.githubusercontent.com/54635679/230989059-ec5c78e0-11c2-4d55-83b4-6b523d3247e4.png)
 )
 
