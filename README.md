@@ -10,7 +10,7 @@ The system will consist of a database of movies, and perhaps eventually TV shows
 ## Objectives
 
 - Create a database from scratch that is able to do basic CRUD Operations.
-- Create a frontend application where users can interact without IMDB movie data.
+- Create a frontend application where users can interact with the IMDB movie data.
 - Create REST API's to allow the backend and frontend to interact with eachother
 
 ## Technologies Used
