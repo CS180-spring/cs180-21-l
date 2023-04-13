@@ -5,7 +5,7 @@
 
 ## Project Description
 
-The system will consist of a database of movies, and perhaps eventually TV shows. In addition to the movie title and rating, the database will include the cast, genre, as well as director. Users will be able to manipulate the database to view fields they find relevant.
+The system will consist of a database of movies, and perhaps eventually TV shows. In addition to the movie title and rating, the database will include the cast, genre, as well as director. The database will be managed through a front-end GUI, where CRUD operations can be executed. CRUD operations can also be performed in the command line as well.
 
 ## Team Members
 
@@ -18,8 +18,9 @@ The system will consist of a database of movies, and perhaps eventually TV shows
 ## Objectives
 
 - Create a database from scratch that is able to do basic CRUD Operations.
-- Create a frontend application where users can interact with the IMDB movie data.
-- Create REST API's to allow the backend and frontend to interact with eachother
+- Create a frontend GUI where developers can manage database.
+- Create a CLI where developers can manage database.
+- Create REST API's to allow the backend and frontend to interact with eachother.
 
 ## Technologies Used
 
