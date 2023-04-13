@@ -5,7 +5,7 @@
 
 ## Project Description
 
-The system will consist of a database of movies, and perhaps eventually TV shows. In addition to the movie title and rating, the database will include the cast, genre, as well as director. The database will be managed through a front-end GUI, where CRUD operations can be executed. CRUD operations can also be performed in the command line as well.
+The system will consist of a database of movies and TV shows. In addition to the movie title and rating, the database will include the cast, genre, as well as director. The database will be managed through a front-end GUI, where CRUD operations can be executed. CRUD operations can also be performed in the command line as well.
 
 ## Team Members
 
