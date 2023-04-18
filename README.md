@@ -28,13 +28,21 @@ The system will consist of a database of movies and TV shows. In addition to the
 - Javascript (Electron.js) HTML, CSS
 - REST API tools TBD
 
+#Interface Documentation
+
+- Create new entries within the database (Implementation TBD)
+- Edit entries in the database (Implementation TBD)
+- Delete entries in the database (Implementation TBD)
+- Read entries in the database (Implementation TBD)
+- CRUD Operations will be accessible through a web GUI
+
 ## Critical Path/Milestones
 
 | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 | --- | --- | --- | --- |
-| Sprint 1 Milestone 1 | Sprint 2 Milestone 1  | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
-| Sprint 1 Milestone 2 | Sprint 2 Milestone 2  | Sprint 3 Milestone 2  | Sprint 4 Milestone 2 |
-| Sprint 1 Milestone 3 | Sprint 2 Milestone 3  | Sprint 3 Milestone 3  | Sprint 4 Milestone 3 |
+| Create User Stories | Sprint 2 Milestone 1  | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
+| Research database implementation | Sprint 2 Milestone 2  | Sprint 3 Milestone 2  | Sprint 4 Milestone 2 |
+| Update Readme | Sprint 2 Milestone 3  | Sprint 3 Milestone 3  | Sprint 4 Milestone 3 |
 
 ## Burndown Chart
 
