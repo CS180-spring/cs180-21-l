@@ -28,7 +28,7 @@ The system will consist of a database of movies and TV shows. In addition to the
 - Javascript (Electron.js) HTML, CSS
 - REST API tools TBD
 
-#Interface Documentation
+## Interface Documentation
 
 - Create new entries within the database (Implementation TBD)
 - Edit entries in the database (Implementation TBD)
