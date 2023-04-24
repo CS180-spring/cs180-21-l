@@ -80,7 +80,7 @@ The system will consist of a database of movies and TV shows. In addition to the
 
 | Sprint 1 | Sprint 2 | Sprint 3 | Sprint 4 |
 | --- | --- | --- | --- |
-| Create User Stories | Sprint 2 Milestone 1  | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
+| Initial Design Documentation | Sprint 2 Milestone 1  | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
 | Research database implementation | Sprint 2 Milestone 2  | Sprint 3 Milestone 2  | Sprint 4 Milestone 2 |
 | Update Readme | Sprint 2 Milestone 3  | Sprint 3 Milestone 3  | Sprint 4 Milestone 3 |
 
