@@ -30,6 +30,45 @@ The system will consist of a database of movies and TV shows. In addition to the
 
 ## Interface Documentation
 
+  +-----------------+
+  |    MovieDB      |
+  +-----------------+
+  | -movies: vector<Movie> |
+  +-----------------+
+  | +add_movie(movie: Movie) |
+  | +get_movie(name: string): Movie* |
+  | +update_movie(name: string, movie: Movie) |
+  | +delete_movie(name: string) |
+  | +save_to_file(filename: string) |
+  | +load_from_file(filename: string) |
+  +-----------------+
+
+        ^
+        |
+        |
+  +-----------------+
+  |      Movie      |
+  +-----------------+
+  | -name: string   |
+  | -director: string |
+  | -actors: vector<string> |
+  | -year_released: int |
+  | -genre: string |
+  +-----------------+
+  | +Movie(name: string, director: string, actors: vector<string>, year_released: int, genre: string) |
+  | +get_name(): string |
+  | +get_director(): string |
+  | +get_actors(): vector<string> |
+  | +get_year_released(): int |
+  | +get_genre(): string |
+  | +set_name(name: string) |
+  | +set_director(director: string) |
+  | +set_actors(actors: vector<string>) |
+  | +set_year_released(year_released: int) |
+  | +set_genre(genre: string) |
+  +-----------------+
+
+
 - Create new entries within the database (Implementation TBD)
 - Edit entries in the database (Implementation TBD)
 - Delete entries in the database (Implementation TBD)
