@@ -69,13 +69,12 @@ The system will consist of a database of movies and TV shows. In addition to the
   | +set_genre(genre: string) |
   +-----------------+
 
-
-
-- Create new entries within the database (Implementation TBD)
-- Edit entries in the database (Implementation TBD)
-- Delete entries in the database (Implementation TBD)
-- Read entries in the database (Implementation TBD)
-- CRUD Operations will be accessible through a web GUI
+```
+- Create new entries within the database (Creates a new movie object and calls the functions to enter the movie details)
+- Edit entries in the database (Calls the appropriate set functions correlated with the field you want to update)
+- Delete entries in the database (call the delete movie function)
+- Read entries in the database (Call the read movie function)
+- CRUD Operations will be accessible through a command line interface (or a Web GUI if time permits)
 
 ## Critical Path/Milestones
 
