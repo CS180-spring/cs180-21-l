@@ -30,6 +30,7 @@ The system will consist of a database of movies and TV shows. In addition to the
 
 ## Interface Documentation
 
+```text
   +-----------------+
   |    MovieDB      |
   +-----------------+
@@ -67,6 +68,7 @@ The system will consist of a database of movies and TV shows. In addition to the
   | +set_year_released(year_released: int) |
   | +set_genre(genre: string) |
   +-----------------+
+
 
 
 - Create new entries within the database (Implementation TBD)
