@@ -89,5 +89,12 @@ The system will consist of a database of movies and TV shows. In addition to the
 ![Burndown Chart](https://user-images.githubusercontent.com/54635679/230989059-ec5c78e0-11c2-4d55-83b4-6b523d3247e4.png)
 )
 
+## Starting the GUI
+to start the GUI
+```
+cd GUI
+yarn run start
+```
+to quit is the same as a Node.js enviroment: (Ctrl + C)
 
 
