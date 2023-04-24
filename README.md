@@ -82,7 +82,7 @@ The system will consist of a database of movies and TV shows. In addition to the
 | --- | --- | --- | --- |
 | Initial Design Documentation | Add CRUD Functions | Sprint 3 Milestone 1  | Sprint 4 Milestone 1 |
 | Research database implementation | Create Movie Object w/ Fields | Sprint 3 Milestone 2  | Sprint 4 Milestone 2 |
-| Update Readme | Sprint 2 Milestone 3  | Research C++ to JSON File | Sprint 4 Milestone 3 |
+| Update Readme | Research C++ to JSON File | Sprint 3 Milestone 3 | Sprint 4 Milestone 3 |
 
 ## Burndown Chart
 
