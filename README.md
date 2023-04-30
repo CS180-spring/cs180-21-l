@@ -93,8 +93,9 @@ The system will consist of a database of movies and TV shows. In addition to the
 to start the GUI
 ```
 cd GUI
-yarn run start
+yarn start
 ```
-to quit is the same as a Node.js enviroment: (Ctrl + C)
+to quit is the same as a Node.js enviroment: (Ctrl + C).
+If you want to edit the code in the gui, please refer to the README.md in the gui folder.
 
 
