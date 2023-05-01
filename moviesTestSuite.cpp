@@ -59,12 +59,12 @@ TEST(MovieTest, getReleaseDate) {
 
 TEST(MovieTest, getGenre) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getGenre(), "Crime drama");
+    EXPECT_EQ(m.getGenre(), "Science-Fiction");
 }
 
 TEST(MovieTest, getID) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getID(), 1);
+    EXPECT_EQ(m.getID(), 2);
 }
 
 
