@@ -119,6 +119,32 @@ TEST(MovieTest, getID) {
     Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
     EXPECT_EQ(m4.getID(), 4);
 }
+//----------------------------------------------------------------------------------------------------------------------------
 
+TEST(MovieTest, getTitle) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    EXPECT_EQ(m5.getTitle(), "The Hunger Games");
+}
+TEST(MovieTest, getActors) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    std::vector<std::string> expectedActors = {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"};
+    EXPECT_EQ(m4.getActors(), expectedActors);
+}
+TEST(MovieTest, getDirector) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    EXPECT_EQ(m5.getDirector(), "Gary Ross");
+}
+TEST(MovieTest, getReleaseDate) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    EXPECT_EQ(m5.getReleaseDate(), "2012");
+}
+TEST(MovieTest, getGenre) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    EXPECT_EQ(m5.getGenre(), "Science Fiction");
+}
+TEST(MovieTest, getID) {
+    Movie m5("The Hunger Games", {"Jennifer Lawrence", "Josh Hutcherson", "Liam Hemsworth", "Woody Harrelson", "Elizabeth Banks"}, "Gary Ross", "2012", "Science Fiction", 5);
+    EXPECT_EQ(m5.getID(), 5);
+}
 
 
