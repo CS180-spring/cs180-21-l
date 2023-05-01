@@ -5,7 +5,6 @@
 #include "Person.h"
 // Tests
 TEST(MovieTest, getTitle) {
-    //      Movie Title, Vector String of actor names in movie, Director name string, release date string, genre string, ID int
     Movie m("The Shawshank Redemption", {"Tim Robbins", "Morgan Freeman", "Bob Gunton"}, "Drank Darabont", "1994", "Crime drama", 1);
     EXPECT_EQ(m.getTitle(), "The Shawshank Redemption");
 }
@@ -39,60 +38,87 @@ TEST(MovieTest, getID) {
 
 TEST(MovieTest, getTitle) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getTitle(), "Star Wars: A New Hope");
+    EXPECT_EQ(m2.getTitle(), "Star Wars: A New Hope");
 }
 
 TEST(MovieTest, getActors) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
     std::vector<std::string> expectedActors = {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"};
-    EXPECT_EQ(m.getActors(), expectedActors);
+    EXPECT_EQ(m2.getActors(), expectedActors);
 }
 
 TEST(MovieTest, getDirector) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getDirector(), "George Lucas");
+    EXPECT_EQ(m2.getDirector(), "George Lucas");
 }
 
 TEST(MovieTest, getReleaseDate) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getReleaseDate(), "1977");
+    EXPECT_EQ(m2.getReleaseDate(), "1977");
 }
 
 TEST(MovieTest, getGenre) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getGenre(), "Science-Fiction");
+    EXPECT_EQ(m2.getGenre(), "Science-Fiction");
 }
 
 TEST(MovieTest, getID) {
     Movie m2("Star Wars: A New Hope", {"Mark Hamill", "Harrison Ford", "Carrie Fisher", "Peter Cushing", "Alec Guinness"}, "George Lucas", "1977", "Science-Fiction", 2);
-    EXPECT_EQ(m.getID(), 2);
+    EXPECT_EQ(m2.getID(), 2);
 }
 //----------------------------------------------------------------------------------------------------------------------------
 TEST(MovieTest, getTitle) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
-    EXPECT_EQ(m.getTitle(), "John Wick");
+    EXPECT_EQ(m3.getTitle(), "John Wick");
 }
 TEST(MovieTest, getActors) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
     std::vector<std::string> expectedActors = {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"};
-    EXPECT_EQ(m.getActors(), expectedActors);
+    EXPECT_EQ(m3.getActors(), expectedActors);
 }
 TEST(MovieTest, getDirector) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
-    EXPECT_EQ(m.getTitle(), "Chad Stahelski");
+    EXPECT_EQ(m3.getTitle(), "Chad Stahelski");
 }
 TEST(MovieTest, getReleaseDate) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
-    EXPECT_EQ(m.getTitle(), "2014");
+    EXPECT_EQ(m3.getTitle(), "2014");
 }
 TEST(MovieTest, getGenre) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
-    EXPECT_EQ(m.getGenre(), "Action");
+    EXPECT_EQ(m3.getGenre(), "Action");
 }
 TEST(MovieTest, getID) {
     Movie m3("John Wick", {"Keanu Reeves", "Michael Nyqvist", "Alfie Allen", "Willem Dafoe", "Adrianne Palicki"}, "Chad Stahelski", "2014", "Action", 3);
-    EXPECT_EQ(m.getID(), 3);
+    EXPECT_EQ(m3.getID(), 3);
 }
 //----------------------------------------------------------------------------------------------------------------------------
+
+TEST(MovieTest, getTitle) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    EXPECT_EQ(m4.getTitle(), "The Lord of the Rings: The Fellowship of the Ring");
+}
+TEST(MovieTest, getActors) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    std::vector<std::string> expectedActors = {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"};
+    EXPECT_EQ(m4.getActors(), expectedActors);
+}
+TEST(MovieTest, getDirector) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    EXPECT_EQ(m4.getDirector(), "Peter Jackson");
+}
+TEST(MovieTest, getReleaseDate) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    EXPECT_EQ(m4.getReleaseDate(), "2001");
+}
+TEST(MovieTest, getGenre) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    EXPECT_EQ(m4.getGenre(), "Fantasy");
+}
+TEST(MovieTest, getID) {
+    Movie m4("The Lord of the Rings: The Fellowship of the Ring", {"Elijah Wood", "Ian McKellen", "Viggo Mortensen", "Orlando Bloom", "Sean Astin"}, "Peter Jackson", "2001", "Fantasy", 4);
+    EXPECT_EQ(m4.getID(), 4);
+}
+
 
 
