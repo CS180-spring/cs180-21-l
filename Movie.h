@@ -7,30 +7,35 @@ using namespace std;
 
 class Movie {
     public:
+        //Constructors
         Movie();
-        Movie(string title, string director, vector<string> actors, string releaseDate, vector<string> genre);
+        Movie(string title, string director, vector<unsigned int> actors, string releaseDate, vector<string> genre);
 
+        //Accessor methods
+        unsigned int getID();
         string getTitle();
         string getDirector();
-        vector<string> getActors();
+        vector<unsigned int> getActors();
         string getReleaseDate();
         vector<string> getGenre();
 
-        void setID(int id);
+        //Modifier methods
+        void setID(unsigned int id);
         void setTitle(string title);
         void setDirector(string name);
 
-        void addActor(string name);
+        void addActor(unsigned int id);
         void addGenre(string name);
 
-        void removeActor(string name);
+        void removeActor(unsigned int id);
         void removeGenre(string genre);
 
     private:
-        int movieID;
+        //Private variables
+        unsigned int movieID;
         string title;
         string director;
-        vector<string> actors;
+        vector<unsigned int> actors;
         string releaseDate;
         vector<string> genre;
 };

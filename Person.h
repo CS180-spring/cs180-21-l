@@ -7,30 +7,35 @@ using namespace std;
 
 class Person {
     public:
+        //Constructors
         Person();
-        Person(string name, string DOB, vector<string> moviesStarredIn, vector<string> moviesDirected);
+        Person(string name, string DOB, vector<unsigned int> moviesStarredIn, vector<unsigned int> moviesDirected);
 
+        //Accessor methods
+        unsigned int getID();
         string getName();
         string getDOB();
-        vector<string> getMovesStarred();
-        vector<string> getMoviesDirected();
+        vector<unsigned int> getMovesStarred();
+        vector<unsigned int> getMoviesDirected();
 
+        //Modifier methods
         void setID(int id);
         void setName(string name);
         void setDOB (string date);
         
-        void addMovieStarred(string title);
-        void addMovieDirected(string title);
+        void addMovieStarred(unsigned int id);
+        void addMovieDirected(unsigned int id);
 
-        void removeMovieStarred(string title);
-        void removeMovieDirected(string title);
+        void removeMovieStarred(unsigned int id);
+        void removeMovieDirected(unsigned int id);
 
     private:
-        int personID;
+        //Private variables
+        unsigned int personID;
         string name;
         string DOB;
-        vector<string> moviesStarredIn;
-        vector<string> moviesDirected;
+        vector<unsigned int> moviesStarredIn;
+        vector<unsigned int> moviesDirected;
 };
 
 #endif

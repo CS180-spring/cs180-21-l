@@ -7,12 +7,16 @@ Movie::Movie() {
     movieID = -1;
 }
 
-Movie::Movie(string title, string director, vector<string> actors, string releaseDate, vector<string> genre) {
+Movie::Movie(string title, string director, vector<unsigned int> actors, string releaseDate, vector<string> genre) {
     this->title = title;
     this->director = director;
     this->actors = actors;
     this->releaseDate = releaseDate;
     this->genre = genre;
+}
+
+unsigned int Movie::getID() {
+    return this->movieID;
 }
 
 string Movie::getTitle() {
@@ -24,7 +28,7 @@ string Movie::getDirector() {
     return this->director;
 }
 
-vector<string> Movie::getActors() {
+vector<unsigned int> Movie::getActors() {
     return this->actors;
 }
 
@@ -35,7 +39,7 @@ vector<string> Movie::getGenre() {
     return this->genre;
 }
 
-void Movie::setID(int id) {
+void Movie::setID(unsigned int id) {
     this->movieID = id;
 }
 
@@ -47,16 +51,16 @@ void Movie::setDirector(string name) {
     this->director = name;
 }
 
-void Movie::addActor(string name) {
-    this->actors.push_back(name);
+void Movie::addActor(unsigned int id) {
+    this->actors.push_back(id);
 }
 void Movie::addGenre(string genre) {
     this->genre.push_back(genre);
 }
 
-void Movie::removeActor(string name) {
+void Movie::removeActor(unsigned int id) {
     for(int k = 0; k < this->actors.size(); k++) {
-        if(this->actors.at(k) == name) {
+        if(this->actors.at(k) == id) {
             this->actors.erase(this->actors.begin() +k);
         }
     }
