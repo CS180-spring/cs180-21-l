@@ -34,6 +34,15 @@ public:
     void buildNameIndex();
     void buildDOBIndex();
 
+
+    //Add object to map and all existing queries
+    void insertMovie(Movie&);
+    void insertPerson(Person&);
+
+    //Remove object from map and all existing queries
+    void removeMovie(unsigned int);
+    void removePerson(unsigned int);
+
 private:
     //The unique ID is mapped to the Movie/Person object
     unordered_map<unsigned int, Movie> movies;
