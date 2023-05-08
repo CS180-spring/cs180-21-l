@@ -10,7 +10,7 @@ class Person {
         //Constructors
         Person();
         Person(string name, string DOB, vector<unsigned int> moviesStarredIn, vector<unsigned int> moviesDirected);
-
+        Person(string name, string DOB);
         //Accessor methods
         unsigned int getID();
         string getName();
@@ -39,3 +39,5 @@ class Person {
 };
 
 #endif
+
+//added constructor for adding a basic person, (No moviesStarredin or MovieDirected fields)
