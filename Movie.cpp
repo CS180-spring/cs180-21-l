@@ -1,16 +1,18 @@
 #include "Movie.h"
 
 Movie::Movie() {
-    title = "";
-    director = "";
-    year = -1;
-    movieID = -1;
+    this->title = "";
+    this->director = "";
+    this->releaseDate = "";
+    this->rating = -1;
+    this->movieID = -1;
 }
 
-Movie::Movie(string title, string director, string year, vector<string> genre) {
+Movie::Movie(string title, string director, string releaseDate, double rating, vector<string> genre) {
     this->title = title;
     this->director = director;
-    this->year = year;
+    this->releaseDate = releaseDate;
+    this->rating = rating;
     this->genre = genre;
 }
 
@@ -27,15 +29,16 @@ string Movie::getDirector() {
     return this->director;
 }
 
-
-string Movie::getYear() {
-    return this->year;
-}
 vector<string> Movie::getGenre() {
     return this->genre;
 }
-void Movie::setYear(string year) {
-    this->year = year;
+
+string Movie::getReleaseDate() {
+    return this->releaseDate;
+}
+
+double Movie::getRating() {
+    return this->rating;
 }
 
 void Movie::setID(unsigned int id) {
@@ -50,23 +53,19 @@ void Movie::setDirector(string name) {
     this->director = name;
 }
 
+void Movie::setRating(double value) {
+    this->rating = value;
+}
+
 void Movie::addGenre(string genre) {
     this->genre.push_back(genre);
 }
 
-//void Movie::removeActor(unsigned int id) {
-//    for(int k = 0; k < this->actors.size(); k++) {
-//        if(this->actors.at(k) == id) {
-//            this->actors.erase(this->actors.begin() +k);
-//        }
-//    }
-//}
-//
-//void Movie::removeGenre(string name) {
-//    for(int k = 0; k < this->genre.size(); k++) {
-//        if(this->genre.at(k) == name) {
-//            this->genre.erase(this->genre.begin() +k);
-//        }
-//    }
-//}
+void Movie::removeGenre(string name) {
+    for(int k = 0; k < this->genre.size(); k++) {
+        if(this->genre.at(k) == name) {
+            this->genre.erase(this->genre.begin() +k);
+        }
+    }
+}
 
