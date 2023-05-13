@@ -205,27 +205,62 @@ void Database::removePerson(unsigned int personID) {
 
 //Movie updating methods
 void Database::updateMovieTitle(unsigned int movieID, const string& title) {
+    auto range = titleIndex.equal_range(movies[movieID].getTitle());
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == movieID) {
+            titleIndex.erase(it);
+            titleIndex.insert(make_pair(title, movieID));
+            break;
+        }
+    }
     movies[movieID].setTitle(title);
 }
 void Database::updateMovieDate(unsigned int movieID, const string& date) {
+    auto range = releaseDateIndex.equal_range(movies[movieID].getReleaseDate());
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == movieID) {
+            releaseDateIndex.erase(it);
+            releaseDateIndex.insert(make_pair(date, movieID));
+            break;
+        }
+    }
     movies[movieID].setReleaseDate(date);
 }
 void Database::updateMovieRating(unsigned int movieID, double rating) {
+    auto range = ratingIndex.equal_range(movies[movieID].getRating());
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == movieID) {
+            ratingIndex.erase(it);
+            ratingIndex.insert(make_pair(rating, movieID));
+            break;
+        }
+    }
     movies[movieID].setRating(rating);
 }
 
 //Person updating methods
 void Database::updatePersonName(unsigned int personID, const string& name) {
+    auto range = nameIndex.equal_range(people[personID].getName());
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == personID) {
+            nameIndex.erase(it);
+            nameIndex.insert(make_pair(name, personID));
+            break;
+        }
+    }
     people[personID].setName(name);
 }
-void Database::updatePersonDOB(unsigned int personID, const string& db) {
-    people[personID].setDOB(db);
+void Database::updatePersonDOB(unsigned int personID, const string& dob) {
+    auto range = dobIndex.equal_range(people[personID].getDOB());
+    for (auto it = range.first; it != range.second; ++it) {
+        if (it->second == personID) {
+            dobIndex.erase(it);
+            dobIndex.insert(make_pair(dob, personID));
+            break;
+        }
+    }
+    people[personID].setDOB(dob);
 }
-
-
-
-
-
 
 //Query Functions
 void Database::buildMovieQueries() {
