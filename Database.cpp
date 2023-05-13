@@ -19,9 +19,10 @@ void Database::loadMovies(string& movieFile) {
     json data;
     file >> data;
     file.close();
-
+    this->maxMovieID = 0;
     for (const auto& movieData : data) {
-        int movieID = movieData["id"];
+        unsigned int movieID = movieData["id"];
+        this->maxMovieID = max(movieID, maxMovieID);
         string title = movieData["title"];
         string year = movieData["year"];
         const auto& genreArray = movieData["genre"];
@@ -42,9 +43,10 @@ void Database::loadPeople(string& personFile) {
     json data;
     file >> data;
     file.close();
-
+    this->maxPersonID = 0;
     for (auto&  peopleData: data) {
-        int personID = peopleData["id"];
+        unsigned int personID = peopleData["id"];
+        this->maxPersonID = max(maxPersonID, personID);
         string name = peopleData["name"];
         string DOB = peopleData["dob"];
         Person person(name, DOB);

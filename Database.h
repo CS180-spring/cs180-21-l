@@ -70,6 +70,10 @@ private:
     unordered_map<unsigned int, Movie> movies;
     unordered_map<unsigned int, Person> people;
 
+    //The Maximum ID number for each group
+    unsigned int maxMovieID;
+    unsigned int maxPersonID;
+
     //Maps unique ID of a Movie/Person to unique IDs of Movie/Person object(s)
     unordered_multimap<unsigned int, unsigned int> moviesToPeople;
     unordered_multimap<unsigned int, unsigned int> peopleToMovies;
