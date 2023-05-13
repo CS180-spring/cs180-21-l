@@ -35,18 +35,8 @@ public:
 
     
     //Ryan Chandler will do these:
-    void buildDatabase();
-
-    //building the movie queries
-    void buildTitleIndex();
-    void buildGenreIndex();
-    void buildRatingIndex();
-    void buildReleaseDateIndex();
-
-    //building the person queries
-    void buildNameIndex();
-    void buildDOBIndex();
-
+    void buildMovieQueries();
+    void buildPersonQueries();
 
     //Add object to map and all existing queries
     void insertMovie(Movie&);

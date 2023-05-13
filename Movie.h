@@ -22,6 +22,7 @@ class Movie {
         //Modifier methods
         void setID(unsigned int id);
         void setTitle(string title);
+        void setReleaseDate(string date);
         void setDirector(string name);
         void setRating(double rating);
         void addGenre(string genre);

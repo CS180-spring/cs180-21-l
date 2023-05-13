@@ -111,3 +111,138 @@ void Database::storePeople(string& personFile) {
         cout << "Failed to open the JSON file for writing." << endl;
     }
 }
+
+//Inserting methods
+void Database::insertMovie(Movie& movie) {
+    // Sets the new ID to 1 greater than the current max ID
+    maxMovieID++;
+    movies[maxMovieID] = movie;
+
+    //Updating Queries
+    titleIndex.insert(make_pair(movie.getTitle(), maxMovieID));
+    ratingIndex.insert(make_pair(movie.getRating(), maxMovieID));
+    releaseDateIndex.insert(make_pair(movie.getReleaseDate(), maxMovieID));
+    vector<string> genres = movie.getGenre();
+    for (string genre : genres) {
+        genreIndex.insert(make_pair(genre, maxMovieID));
+    }
+}
+
+void Database::insertPerson(Person& person) {
+    // Sets the new ID to 1 greater than the current max ID
+    maxPersonID++;
+    people[maxPersonID] = person;
+
+    //Updating Queries
+    nameIndex.insert(make_pair(person.getName(), maxPersonID));
+    dobIndex.insert(make_pair(person.getDOB(), maxPersonID));
+}
+
+//Removal methods
+void Database::removeMovie(unsigned int movieID) {
+    Movie movie = movies[movieID];
+    movies.erase(movieID);
+
+    //Updating Queries
+    //Used Chat-GPT to find out how to iterate multimaps
+    auto titleRange = titleIndex.equal_range(movie.getTitle());
+    for (auto it = titleRange.first; it != titleRange.second; ++it) {
+        if (it->second == movieID) {
+            titleIndex.erase(it);
+            break;
+        }
+    }
+    auto ratingRange = ratingIndex.equal_range(movie.getRating());
+    for (auto it = ratingRange.first; it != ratingRange.second; ++it) {
+        if (it->second == movieID) {
+            ratingIndex.erase(it);
+            break;
+        }
+    }
+
+    auto releaseDateRange = releaseDateIndex.equal_range(movie.getReleaseDate());
+    for (auto it = releaseDateRange.first; it != releaseDateRange.second; ++it) {
+        if (it->second == movieID) {
+            releaseDateIndex.erase(it);
+            break;
+        }
+    }
+
+    vector<string> genres = movie.getGenre();
+    for (string& genre : genres) {
+        auto genreRange = genreIndex.equal_range(genre);
+        for (auto it = genreRange.first; it != genreRange.second; ++it) {
+            if (it->second == movieID) {
+                genreIndex.erase(it);
+                break;
+            }
+        }
+    }
+}
+
+void Database::removePerson(unsigned int personID) {
+    Person person = people[personID];
+    people.erase(personID);
+
+    //Updating Queries
+    //Used Chat-GPT to find out how to iterate multimaps
+    auto dobRange = dobIndex.equal_range(person.getDOB());
+    for (auto it = dobRange.first; it != dobRange.second; ++it) {
+        if (it->second == personID) {
+            dobIndex.erase(it);
+            break;
+        }
+    }
+    
+    auto nameRange = nameIndex.equal_range(person.getName());
+    for (auto it = nameRange.first; it != nameRange.second; ++it) {
+        if (it->second == personID) {
+            releaseDateIndex.erase(it);
+            break;
+        }
+    }
+}
+
+//Movie updating methods
+void Database::updateMovieTitle(unsigned int movieID, const string& title) {
+    movies[movieID].setTitle(title);
+}
+void Database::updateMovieDate(unsigned int movieID, const string& date) {
+    movies[movieID].setReleaseDate(date);
+}
+void Database::updateMovieRating(unsigned int movieID, double rating) {
+    movies[movieID].setRating(rating);
+}
+
+//Person updating methods
+void Database::updatePersonName(unsigned int personID, const string& name) {
+    people[personID].setName(name);
+}
+void Database::updatePersonDOB(unsigned int personID, const string& db) {
+    people[personID].setDOB(db);
+}
+
+
+
+
+
+
+//Query Functions
+void Database::buildMovieQueries() {
+    for (auto& [id, movie] : movies) {
+        titleIndex.insert(make_pair(movie.getTitle(), id));
+        ratingIndex.insert(make_pair(movie.getRating(), id));
+        releaseDateIndex.insert(make_pair(movie.getReleaseDate(), id));
+        vector<string> genres = movie.getGenre();
+        for (string genre : genres) {
+            genreIndex.insert(make_pair(genre, id));
+        }
+    }
+}
+
+void Database::buildPersonQueries() {
+    for (auto& [id, person] : people) {
+        nameIndex.insert(make_pair(person.getName(), id));
+        dobIndex.insert(make_pair(person.getDOB(), id));
+    }
+}

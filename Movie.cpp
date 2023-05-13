@@ -45,6 +45,10 @@ void Movie::setID(unsigned int id) {
     this->movieID = id;
 }
 
+void Movie::setReleaseDate(string date) {
+    this->releaseDate = date;
+}
+
 void Movie::setTitle(string title) {
     this->title = title;
 }
