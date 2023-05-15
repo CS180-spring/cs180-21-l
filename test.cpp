@@ -4,11 +4,13 @@
 #include <fstream>
 #include <string>
 #include <vector>
-#include "../Movie.h"
-#include "../Person.h"
-#include "../Database.h"
+#include "Movie.h"
+#include "Person.h"
+#include "Database.h"
 #include <utility>
 #include "json.h"
+
+
 
 using json = nlohmann::json;
 using namespace std;
@@ -32,6 +34,7 @@ protected:
     Database* database;
 };
 // Test that the loadMovies() function loads the movies from the specified file
+
 TEST_F(DatabaseTest, loadMovies) {
     // Create a test file with some movies
     ofstream file("test_movies.json");
@@ -40,21 +43,21 @@ TEST_F(DatabaseTest, loadMovies) {
   {
     "id": 1,
     "title": "The Shawshank Redemption",
-    "year": 1994,
+    "year": "1994",
     "director": "Frank Darabont",
     "genre": ["Drama"]
   },
   {
     "id": 2,
     "title": "The Godfather",
-    "year": 1972,
+    "year": "1972",
     "director": "Francis Ford Coppola",
     "genre": ["Crime", "Drama"]
   },
   {
     "id": 3,
     "title": "The Dark Knight",
-    "year": 2008,
+    "year": "2008",
     "director": "Christopher Nolan",
     "genre": ["Action", "Crime", "Drama"]
   }
@@ -76,23 +79,80 @@ TEST_F(DatabaseTest, loadMovies) {
     auto movie1 = database->getMovieByID(1);
     EXPECT_EQ(movie1.getID(), 1);
     EXPECT_EQ(movie1.getTitle(), "The Shawshank Redemption");
-    EXPECT_EQ(movie1.getYear(), 1994);
+    EXPECT_EQ(movie1.getYear(), "1994");
     EXPECT_EQ(movie1.getDirector(), "Frank Darabont");
-    EXPECT_EQ(movie1.getGenre(), std::vector<std::string>{"Drama"});
+    vector<string> expectedGenres1 = { "Drama" };
+    EXPECT_EQ(movie1.getGenre(), expectedGenres1);
 
     auto movie2 = database->getMovieByID(2);
     EXPECT_EQ(movie2.getID(), 2);
     EXPECT_EQ(movie2.getTitle(), "The Godfather");
-    EXPECT_EQ(movie2.getYear(), 1972);
+    EXPECT_EQ(movie2.getYear(), "1972");
     EXPECT_EQ(movie2.getDirector(), "Francis Ford Coppola");
-    EXPECT_EQ(movie2.getGenre(), std::vector<std::string>{"Crime", "Drama"});
+    vector<string> expectedGenres2 = { "Crime", "Drama" };
+    EXPECT_EQ(movie2.getGenre(), expectedGenres2);
 
     auto movie3 = database->getMovieByID(3);
     EXPECT_EQ(movie3.getID(), 3);
     EXPECT_EQ(movie3.getTitle(), "The Dark Knight");
-    EXPECT_EQ(movie3.getYear(), 2008);
+    EXPECT_EQ(movie3.getYear(), "2008");
     EXPECT_EQ(movie3.getDirector(), "Christopher Nolan");
-    EXPECT_EQ(movie3.getGenre(), std::vector<std::string>{"Action", "Crime", "Drama"});
+    vector<string> expectedGenres3 = { "Action", "Crime", "Drama" };
+    EXPECT_EQ(movie3.getGenre(), expectedGenres3);
+
 }
+
+    TEST_F(DatabaseTest, loadPeople){
+        // Create a test file with some people
+        ofstream file("test_people.json");
+        file << R"(
+[
+  {
+    "id": 1,
+    "name": "Samuel L. Jackson",
+    "DOB": "December 21, 1948"
+  },
+  {
+    "id": 2,
+    "name": "Robert Downey Jr.",
+    "DOB": "April 4, 1965"
+  },
+  {
+    "id": 3,
+    "name": "Leonardo DiCaprio",
+    "DOB": "November 11, 1974"
+  }
+]
+)";
+        file.close();
+
+        // Load the people from the test file
+        std::string peopleFile = "test_people.json";
+        database->loadPeople(peopleFile);
+
+        // Check that the people were loaded correctly
+        EXPECT_EQ(database->getPeople().size(), 3);
+        EXPECT_EQ(database->getPersonByID(1).getName(), "Samuel L. Jackson");
+        EXPECT_EQ(database->getPersonByID(2).getName(), "Robert Downey Jr.");
+        EXPECT_EQ(database->getPersonByID(3).getName(), "Leonardo DiCaprio");
+
+        // Check that the people were loaded into the database correctly
+        auto person1 = database->getPersonByID(1);
+        EXPECT_EQ(person1.getID(), 1);
+        EXPECT_EQ(person1.getName(), "Samuel L. Jackson");
+        EXPECT_EQ(person1.getDOB(), "December 21, 1948");
+
+        auto person2 = database->getPersonByID(2);
+        EXPECT_EQ(person2.getID(), 2);
+        EXPECT_EQ(person2.getName(), "Robert Downey Jr.");
+        EXPECT_EQ(person2.getDOB(), "April 4, 1965");
+
+        auto person3 = database->getPersonByID(3);
+        EXPECT_EQ(person3.getID(), 3);
+        EXPECT_EQ(person3.getName(), "Leonardo DiCaprio");
+        EXPECT_EQ(person3.getDOB(), "November 11, 1974");
+    }
+
+
 
 
