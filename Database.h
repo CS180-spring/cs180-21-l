@@ -18,12 +18,12 @@ public:
 
     //Converts whatever is the in the file to an unordered_map for movies and people
     //Change function types and parameters as needed
-    void loadMovies(string& movieFile);
-    void loadPeople(string& personFile);
+    void loadMovies(const string& movieFile);
+    void loadPeople(const string& personFile);
 
     //Converts the 2 unordered_maps to JSON format
-    void storeMovies(string& movieFile);
-    void storePeople(string& personFile);
+    void storeMovies(const string& movieFile);
+    void storePeople(const string& personFile);
 
     //Converts the actedin, actorsin JSONs to unordered_multimaps
     void loadMoviesToPeople(string& castFile);

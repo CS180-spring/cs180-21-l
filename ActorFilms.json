@@ -1,0 +1,26 @@
+[
+  {
+    "movieID": 1,
+    "peopleID:": [ 1, 2, 3 ]
+  },
+
+  {
+    "movieID": 2,
+    "peopleID:": [ 4 ]
+  },
+
+  {
+    "movieID": 3,
+    "peopleID:": [ 5, 6, 10 ]
+  },
+
+  {
+    "movieID": 4,
+    "peopleID:": [ 7, 8 ]
+  },
+
+  {
+    "movieID": 5,
+    "peopleID:": [ 9 ]
+  }
+]

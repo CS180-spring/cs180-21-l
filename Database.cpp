@@ -10,7 +10,7 @@ using namespace std;
 
 Database::Database() { }
 
-void Database::loadMovies(string& movieFile) {
+void Database::loadMovies(const string& movieFile) {
     ifstream file(movieFile);
     if (!file.is_open()) {
         cout << "Failed to open the JSON file." << endl;
@@ -33,7 +33,7 @@ void Database::loadMovies(string& movieFile) {
     }
 }
 
-void Database::loadPeople(string& personFile) {
+void Database::loadPeople(const string& personFile) {
     ifstream file(personFile);
     if (!file.is_open()) {
         cout << "Failed to open the JSON file." << endl;
@@ -54,7 +54,7 @@ void Database::loadPeople(string& personFile) {
 }
 
 //Converts the 2 unordered_maps to JSON format
-void Database::storeMovies(string& movieFile)  {
+void Database::storeMovies(const string& movieFile)  {
     json jsonData;
 
     for (auto& pair : movies) {
@@ -85,7 +85,7 @@ void Database::storeMovies(string& movieFile)  {
     }
 }
 
-void Database::storePeople(string& personFile) {
+void Database::storePeople(const string& personFile) {
     json jsonData;
 
     for (auto& pair : people) {

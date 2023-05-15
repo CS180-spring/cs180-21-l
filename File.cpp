@@ -7,7 +7,7 @@ void File::saveDatabase(const string& movieFile, const string& personFile, Datab
 
 
 
-void File::loadDatabase(const std::string& movieFile, const string& personFile, Database& db) {
+void File::loadDatabase(const string& movieFile, const string& personFile, Database& db) {
 	db.loadMovies(movieFile);
 	db.loadPeople(personFile);
 }
