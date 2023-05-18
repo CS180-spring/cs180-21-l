@@ -35,18 +35,8 @@ public:
 
     
     //Ryan Chandler will do these:
-    void buildDatabase();
-
-    //building the movie queries
-    void buildTitleIndex();
-    void buildGenreIndex();
-    void buildRatingIndex();
-    void buildReleaseDateIndex();
-
-    //building the person queries
-    void buildNameIndex();
-    void buildDOBIndex();
-
+    void buildMovieQueries();
+    void buildPersonQueries();
 
     //Add object to map and all existing queries
     void insertMovie(Movie&);
@@ -69,6 +59,10 @@ private:
     //The unique ID is mapped to the Movie/Person object
     unordered_map<unsigned int, Movie> movies;
     unordered_map<unsigned int, Person> people;
+
+    //The Maximum ID number for each group
+    unsigned int maxMovieID;
+    unsigned int maxPersonID;
 
     //Maps unique ID of a Movie/Person to unique IDs of Movie/Person object(s)
     unordered_multimap<unsigned int, unsigned int> moviesToPeople;
