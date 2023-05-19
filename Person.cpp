@@ -6,12 +6,6 @@ Person::Person() {
     this->personID = -1;
 }
 
-Person::Person(string name, string DOB) {
-    this->name = name;
-    this->DOB = DOB;
-    this->personID = -1;
-}
-
 Person::Person(string name, string DOB, vector<unsigned int> moviesStarredIn, vector<unsigned int> moviesDirected) {
     this->name = name;
     this->DOB = DOB;
@@ -60,7 +54,7 @@ void Person::addMovieDirected(unsigned int id) {
 }
 
 void Person::removeMovieStarred(unsigned int id) {
-    for(size_t k = 0; k < this->moviesStarredIn.size(); k++) {
+    for(int k = 0; k < this->moviesStarredIn.size(); k++) {
         if(this->moviesStarredIn.at(k) == id) {
             this->moviesStarredIn.erase(this->moviesStarredIn.begin() + k);
         }
@@ -68,7 +62,7 @@ void Person::removeMovieStarred(unsigned int id) {
 }
 
 void Person::removeMovieDirected(unsigned int id) {
-    for(size_t k = 0; k < this->moviesDirected.size(); k++) {
+    for(int k = 0; k < this->moviesDirected.size(); k++) {
         if(this->moviesDirected.at(k) == id) {
             this->moviesDirected.erase(this->moviesDirected.begin() + k);
         }

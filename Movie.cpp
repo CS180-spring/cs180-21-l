@@ -45,6 +45,10 @@ void Movie::setID(unsigned int id) {
     this->movieID = id;
 }
 
+void Movie::setReleaseDate(string date) {
+    this->releaseDate = date;
+}
+
 void Movie::setTitle(string title) {
     this->title = title;
 }
@@ -62,9 +66,9 @@ void Movie::addGenre(string genre) {
 }
 
 void Movie::removeGenre(string name) {
-    for (int k = 0; k < this->genre.size(); k++) {
-        if (this->genre.at(k) == name) {
-            this->genre.erase(this->genre.begin() + k);
+    for(int k = 0; k < this->genre.size(); k++) {
+        if(this->genre.at(k) == name) {
+            this->genre.erase(this->genre.begin() +k);
         }
     }
 }
