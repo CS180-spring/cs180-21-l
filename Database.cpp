@@ -67,7 +67,7 @@ void Database::storeMovies(string& movieFile)  {
         movieData["title"] = movie.getTitle();
         movieData["year"] = movie.getReleaseDate();
         movieData["director"] = movie.getDirector();
-
+        movieData["rating"] = movie.getRating();
         json genreArray = json::array();
         for (auto& genre : movie.getGenre()) {
             genreArray.push_back(genre);
@@ -88,6 +88,7 @@ void Database::storeMovies(string& movieFile)  {
 }
 
 void Database::storePeople(string& personFile) {
+
     json jsonData;
 
     for (auto& pair : people) {
@@ -280,4 +281,101 @@ void Database::buildPersonQueries() {
         nameIndex.insert(make_pair(person.getName(), id));
         dobIndex.insert(make_pair(person.getDOB(), id));
     }
+=======
+//Converts the actedin, actorsin JSONs to unordered_multimaps
+void Database::loadMoviesToPeople(const string& castFile) {
+    ifstream file(castFile);
+    if (!file.is_open()) {
+        cout << "Failed to open file: " << castFile << endl;
+        return;
+    }
+
+    json jsonData;
+    try {
+        file >> jsonData;
+    }
+    catch (const json::parse_error& e) {
+        cout << "Failed to parse JSON file: " << e.what() << endl;
+        return;
+    }
+
+    
+    for (auto& entry : jsonData) {
+        int movieID = entry["movieID"];
+        const auto& peopleIDs = entry["peopleID"];
+
+        for (int peopleID : peopleIDs) {
+            moviesToPeople.emplace(movieID, peopleID);
+        }
+    }
+}
+void Database::loadPeopleToMovies(const string& starredInFile) {
+    ifstream file(starredInFile);
+    if (!file.is_open()) {
+        cout << "Failed to open file: " << starredInFile << endl;
+        return;
+    }
+
+    json jsonData;
+    try {
+        file >> jsonData;
+    }
+    catch (const json::parse_error& e) {
+        cout << "Failed to parse JSON file: " << e.what() << endl;
+        return;
+    }
+
+
+    for (auto& entry : jsonData) {
+        int peopleID = entry["peopleID"];
+        auto& movieIDs = entry["movieID"];
+
+        for (int movieID : movieIDs) {
+            peopleToMovies.emplace(peopleID, movieID);
+        }
+    }
+}
+
+//Converts the 2 unordered_maps to JSON format
+void Database::storeMoviesToPeople(const string& castFile) const {
+    json jsonData;
+    for (auto& pair : moviesToPeople) {
+        int movieID = pair.first;
+        auto& peopleID = pair.second;
+
+        jsonData.push_back({
+            {"movieID", movieID},
+            {"peopleID", peopleID}
+            });
+    }
+
+    ofstream file(castFile);
+    if (!file.is_open()) {
+        cout << "Failed to open file: " << castFile << endl;
+        return;
+    }
+
+    file << setw(4) << jsonData << endl;
+    cout << "Stored movies to people data in file: " << castFile << endl;
+}
+void Database::storePeopleToMovies(const string& starredInFile) const {
+    json jsonData;
+    for (auto& pair : peopleToMovies) {
+        int peopleID = pair.first;
+        auto& movieID = pair.second;
+
+        jsonData.push_back({
+            {"PeopleID", peopleID},
+            {"movieID", movieID}
+            });
+    }
+
+    ofstream file(starredInFile);
+    if (!file.is_open()) {
+        cout << "Failed to open file: " << starredInFile << endl;
+        return;
+    }
+
+    file << setw(4) << jsonData << endl;
+    cout << "Stored movies to people data in file: " << starredInFile << endl;
 }

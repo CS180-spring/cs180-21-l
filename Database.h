@@ -24,6 +24,17 @@ public:
     //Converts the 2 unordered_maps to JSON format
     void storeMovies(string& movieFile);
     void storePeople(string& personFile);
+    //Converts the actedin, actorsin JSONs to unordered_multimaps
+    void loadMoviesToPeople(const string& castFile);
+    void loadPeopleToMovies(const string& starredInFile);
+
+    //Converts the 2 unordered_maps to JSON format
+    void storeMoviesToPeople(const string& castFile) const;
+    void storePeopleToMovies(const string& starredInFile) const;
+
+
+    //Ryan Chandler will do these:
+    void buildDatabase();
 
     //Converts the actedin, actorsin JSONs to unordered_multimaps
     void loadMoviesToPeople(string& castFile);

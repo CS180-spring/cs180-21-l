@@ -13,10 +13,12 @@ using namespace std;
 
 class File {
 public:
-    void saveDatabase(const string& movieFile, const string& personFile, Database& db);
+    void saveDatabase(const string& movieFile, const string& personFile, 
+        const string& castFile, const string& starredInFile, Database& db);
 
 
-    void loadDatabase(const std::string& movieFile, const string& personFile, Database& db);
+    void loadDatabase(const std::string& movieFile, const string& personFile, 
+        const string& castFile, const string& starredInFile, Database& db);
 
 };
 

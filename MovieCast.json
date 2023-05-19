@@ -1,0 +1,52 @@
+[
+  {
+    "peopleID": 1,
+    "movieID": [ 1 ]
+  },
+
+  {
+    "peopleID": 1,
+    "movieID": [ 1 ]
+  },
+
+  {
+    "peopleID": 3,
+    "movieID": [ 1 ]
+  },
+
+  {
+    "peopleID": 4,
+    "movieID": [ 2 ]
+  },
+
+  {
+    "peopleID": 5,
+    "movieID": [ 3 ]
+  },
+
+  {
+    "peopleID": 6,
+    "movieID": [ 3 ]
+  },
+
+  {
+    "peopleID": 7,
+    "movieID": [ 4 ]
+  },
+
+  {
+    "peopleID": 8,
+    "movieID": [ 4 ]
+  },
+
+  {
+    "peopleID": 9,
+    "movieID": [ 5 ]
+  },
+
+  {
+    "peopleID": 10,
+    "movieID": [ 3 ]
+  }
+
+]
