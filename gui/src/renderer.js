@@ -28,9 +28,20 @@
 
 import "./index.css";
 
-console.log(
-  '👋 This message is being logged by "renderer.js", included via webpack'
-);
+export function fetchDocumentsFromStorage() {
+  //we expect an array of objects from the main process
+  console.log("sending FETCH_DOCUMENTS_FROM_STORAGE to main process");
+  ipcRenderer.send(FETCH_DOCUMENTS_FROM_STORAGE, "items");
+}
 
-// Add this to the end of the existing file
+export function saveDocumentToStorage(item) {
+  console.log("sending SAVE_DOCUMENTS_TO_STORAGE to main process");
+  ipcRenderer.send(SAVE_DOCUMENTS_TO_STORAGE, item);
+}
+
+export function removeDocumentFromStorage(item) {
+  console.log("sending REMOVE_DOCUMENTS_FROM_STORAGE to main process");
+  ipcRenderer.send(REMOVE_DOCUMENTS_FROM_STORAGE, item);
+}
+
 import "./app.jsx";

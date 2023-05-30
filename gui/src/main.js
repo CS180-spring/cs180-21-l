@@ -1,6 +1,6 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
-
+const { spawn } = require("child_process");
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -9,14 +9,50 @@ if (require("electron-squirrel-startup")) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1400,
+    height: 950,
+    minWidth: 800,
+    minHeight: 600,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
       nodeIntegration: true,
     },
   });
+  ipcMain.on("set-title", (event, title) => {
+    const webContents = event.sender;
+    const win = BrowserWindow.fromWebContents(webContents);
+    console.log("setting title to", title);
+    win.setTitle(title);
+  });
+  ipcMain.on("open-terminal", (event) => {
+    // get the path to the current directory
+    const codeDirectory = path.join(__dirname, "..", "..");
+    console.log("opening terminal at path", codeDirectory);
+    //check if a terminal is already open
+    //if it is, then open a new tab in the existing terminal
+    //if it isn't, then open a new terminal
 
+    let openTerminalAtPath = spawn("open", [
+      "-a",
+      "Terminal",
+      codeDirectory, //make it so that this is the path to the current directory
+    ]);
+    openTerminalAtPath.on("error", (err) => {
+      console.log(err);
+    });
+  });
+
+  ipcMain.on("read-file", (event, filePath) => {
+    const fs = require("fs");
+    fs.readFile(filePath, "utf8", (err, data) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      // send the data back to the renderer process
+      event.sender.send("read-file-reply", data);
+    });
+  });
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
