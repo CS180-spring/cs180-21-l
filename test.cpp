@@ -29,21 +29,62 @@ protected:
         // Delete the Database object
         delete database;
     }
+    // Helper function to compare two movies
+    bool compareMovies(const Movie& movie1, const Movie& movie2) {
+        if (movie1.getTitle() != movie2.getTitle()) {
+            return movie1.getTitle() < movie2.getTitle();
+        }
+        else if (movie1.getYear() != movie2.getYear()) {
+            return movie1.getYear() < movie2.getYear();
+        }
+        else {
+            return movie1.getDirector() < movie2.getDirector();
+        }
+    }
 
+    // Helper function to compare two people
+    bool comparePeople(Person& person1, Person& person2) {
+        if (person1.getName() != person2.getName()) {
+            return person1.getName() < person2.getName();
+        }
+        else {
+            return person1.getDOB() < person2.getDOB();
+        }
+    }
+
+    bool movieExistsInVector(const Movie& movie, const vector<Movie>& movies) {
+        for (const auto& m : movies) {
+            if (compareMovies(movie, m)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    bool personExistsInVector(Person& person, vector<Person>& people) {
+        for (auto& p : people) {
+            if (comparePeople(person, p)) {
+                return true;
+            }
+        }
+        return false;
+    }
     // The Database object under test
     Database* database;
+
 };
 // Test that the loadMovies() function loads the movies from the specified file
-
+// This makes sure that our loadMovies function is working
 TEST_F(DatabaseTest, loadMovies) {
     // Create a test file with some movies
     ofstream file("test_movies.json");
+    //What our movies json file would look like
     file << R"(
 [
   {
     "id": 1,
     "title": "The Shawshank Redemption",
     "year": "1994",
+    "rating": 5.0,
     "director": "Frank Darabont",
     "genre": ["Drama"]
   },
@@ -51,6 +92,7 @@ TEST_F(DatabaseTest, loadMovies) {
     "id": 2,
     "title": "The Godfather",
     "year": "1972",
+    "rating": 5.0,
     "director": "Francis Ford Coppola",
     "genre": ["Crime", "Drama"]
   },
@@ -58,6 +100,7 @@ TEST_F(DatabaseTest, loadMovies) {
     "id": 3,
     "title": "The Dark Knight",
     "year": "2008",
+    "rating": 5.0,
     "director": "Christopher Nolan",
     "genre": ["Action", "Crime", "Drama"]
   }
@@ -101,10 +144,11 @@ TEST_F(DatabaseTest, loadMovies) {
     EXPECT_EQ(movie3.getGenre(), expectedGenres3);
 
 }
-
+// This makes sure that our loadPeople function is working
     TEST_F(DatabaseTest, loadPeople){
         // Create a test file with some people
         ofstream file("test_people.json");
+        //What our people json file would look like
         file << R"(
 [
   {
@@ -153,6 +197,93 @@ TEST_F(DatabaseTest, loadMovies) {
         EXPECT_EQ(person3.getDOB(), "November 11, 1974");
     }
 
+//These tests make sure our updateMovieTitle(), updateMovieDate(), updateMovieRating() functions are working
+
+    TEST_F(DatabaseTest, updateMovieTitleTest) {
+        unsigned int movieID = 1;
+        string newTitle = "Updated Movie Title 1";
+        database->updateMovieTitle(1, newTitle);
+        Movie updatedMovie = database->getMovieByID(movieID);
+        EXPECT_EQ(updatedMovie.getTitle(), "Updated Movie Title 1");
+    }
+
+    TEST_F(DatabaseTest, updateMovieDateTest) {
+        unsigned int movieID = 2;
+        string newDate = "1999";
+        database->updateMovieDate(movieID, newDate);
+        Movie updatedMovie = database->getMovieByID(movieID);
+        EXPECT_EQ(updatedMovie.getYear(), newDate);
+    }
+    TEST_F(DatabaseTest, updateMovieRatingTest) {
+        unsigned int movieID = 3;
+        double newRating = 2.6;
+        database->updateMovieRating(movieID, newRating);
+        Movie updatedMovie = database->getMovieByID(movieID);
+        EXPECT_DOUBLE_EQ(updatedMovie.getRating(), newRating);
+    }
+
+//Tests for updatePersonName() and updatePersonDOB()
+    TEST_F(DatabaseTest, updatePersonNameTest) {
+        unsigned int personID = 1;
+        string newName = "Ian Kim";
+        database->updatePersonName(personID, newName);
+        Person updatedPerson = database->getPersonByID(personID);
+        EXPECT_EQ(updatedPerson.getName(), newName);
+    }
+
+    TEST_F(DatabaseTest, updatePersonDOBTest) {
+        unsigned int personID = 2;
+        string newDOB = "July 20, 2001";
+        database->updatePersonDOB(personID, newDOB);
+        Person updatedPerson = database->getPersonByID(personID);
+        EXPECT_EQ(updatedPerson.getDOB(), newDOB);
+    }
+
+//Tests for insertMovie(), removeMovie(), insertPerson(), removePerson()
+    TEST_F(DatabaseTest, insertMovieTest){
+        Database db;
+        Movie sampleMovie("Sample Movie", "Sample Director", "2023", 10.0, { "Thriller", "Drama" });
+        Movie sampleMovie2("Sample Movie 2", "Sample Director 2", "2024", 9.0, { "Comedy", "Action" });
+        db.insertMovie(sampleMovie);
+        db.insertMovie(sampleMovie2);
+        ASSERT_EQ(2, db.getMovies().size());
+     
+    }
+
+    TEST_F(DatabaseTest, insertPersonTest) {
+        Database db;
+        Person samplePerson("Ian Kim", "July 20, 2001");
+        Person samplePerson2("Dion Kim", "November 11, 1997");
+        db.insertPerson(samplePerson);
+        db.insertPerson(samplePerson2);
+        ASSERT_EQ(2, db.getPeople().size());
+    }
+
+    TEST_F(DatabaseTest, removeMovieTest) {
+        Database db;
+        unsigned int movieID = 1;
+        Movie sampleMovie("Sample Movie", "Sample Director", "2023", 10.0, { "Thriller", "Drama" });
+        db.insertMovie(sampleMovie);
+        db.removeMovie(movieID);
+        Movie retrievedMovie = db.getMovieByID(movieID);
+        string expectedTitle = "";
+        retrievedMovie = Movie();
+        ASSERT_EQ(expectedTitle, retrievedMovie.getTitle());
+    }
 
 
 
+
+
+
+    TEST_F(DatabaseTest, removePersonTest) {
+        Database db;
+        unsigned int personID = 1;
+        Person samplePerson("Ian Kim", "July 20, 2001");
+        db.insertPerson(samplePerson);
+        db.removePerson(personID);
+        Person retrievedPerson = db.getPersonByID(personID);
+        Person expectedPerson("", "");
+        ASSERT_EQ(expectedPerson, retrievedPerson);
+       
+    }
