@@ -43,13 +43,19 @@ const createWindow = () => {
   });
 
   ipcMain.on("read-file", (event, filePath) => {
+    //filePath is the relative path to the file. It should be a string.
+    //read the file at filePath
     const fs = require("fs");
+    const path = require("path");
+    filePath = path.join(__dirname, "..", "..", filePath);
+    console.log("reading file at path", filePath);
     fs.readFile(filePath, "utf8", (err, data) => {
       if (err) {
         console.error(err);
-        return;
+        return "500";
       }
       // send the data back to the renderer process
+      console.log("sending data back to renderer process");
       event.sender.send("read-file-reply", data);
     });
   });

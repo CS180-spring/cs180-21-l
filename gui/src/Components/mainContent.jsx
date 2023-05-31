@@ -15,6 +15,7 @@ import DataTable from "./dataTable";
 
 export default function MainContent(props) {
   window.electronAPI.setTitle(props.title);
+
   return (
     <Pane
       display="flex"

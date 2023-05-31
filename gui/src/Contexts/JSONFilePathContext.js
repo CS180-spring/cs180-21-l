@@ -9,6 +9,9 @@ export const useJSONFilePath = () => useContext(JSONFilePathContext);
 // Provider component for the JSON file path context
 export const JSONFilePathProvider = ({ children }) => {
   const [filePath, setFilePath] = useState("");
+  if (filePath !== "") {
+    console.log("filePath:", filePath);
+  }
 
   return (
     <JSONFilePathContext.Provider value={{ filePath, setFilePath }}>

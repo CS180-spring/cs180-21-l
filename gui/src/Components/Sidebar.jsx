@@ -86,9 +86,11 @@ export default function Sidebar({ contentChange }) {
           padding={minorScale(2)}
           iconBefore={DatabaseIcon}
           onClick={() => {
-            console.log("Clicked Movies.json");
-            contentChange("Movies.json", "Movies.json");
-            setFilePath("../../../data-store/Movies.json");
+            contentChange(
+              "Movies.json",
+              "Source Database containing movies and related information"
+            );
+            setFilePath("../data-store/Movies.json");
           }}
         >
           Movies.json
@@ -99,8 +101,8 @@ export default function Sidebar({ contentChange }) {
           padding={minorScale(2)}
           iconBefore={DatabaseIcon}
           onClick={() => {
-            contentChange("People.json", "People.json");
-            console.log("Clicked People.json");
+            contentChange("People.json", "Source Database containing people");
+            setFilePath("../data-store/People.json");
           }}
         >
           People.json
@@ -132,8 +134,11 @@ export default function Sidebar({ contentChange }) {
           padding={minorScale(2)}
           iconBefore={DatabaseIcon}
           onClick={() => {
-            contentChange("Acted_In.json", "descirption");
-            console.log("Clicked People.json");
+            contentChange(
+              "ActorFilms.json",
+              "a relational database holding actors and the films they have acted in"
+            );
+            setFilePath("../data-store/ActorFilms.json");
           }}
         >
           Acted_In.json
@@ -144,8 +149,11 @@ export default function Sidebar({ contentChange }) {
           padding={minorScale(2)}
           iconBefore={DatabaseIcon}
           onClick={() => {
-            contentChange("Acted_By.json", "decription");
-            console.log("Clicked People.json");
+            contentChange(
+              "MovieCast.json",
+              "a relational database holding the cast of movies"
+            );
+            setFilePath("../data-store/MovieCast.json");
           }}
         >
           Acted_By.json
