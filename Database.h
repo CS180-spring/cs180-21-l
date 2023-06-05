@@ -65,11 +65,12 @@ public:
     //Functions to update an individual Person, and existing queries
     void updatePersonName(unsigned int, const string& name);
     void updatePersonDOB(unsigned int, const string& db);
+    unordered_map<unsigned int, Movie> movies;
+    unordered_map<unsigned int, Person> people;
 
 private:
     //The unique ID is mapped to the Movie/Person object
-    unordered_map<unsigned int, Movie> movies;
-    unordered_map<unsigned int, Person> people;
+    
 
     //The Maximum ID number for each group
     unsigned int maxMovieID;

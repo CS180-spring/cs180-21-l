@@ -5,6 +5,8 @@
 #include <string>
 #include "json.h"
 
+
+
 using json = nlohmann::json;
 using namespace std;
 
@@ -44,17 +46,18 @@ void Database::loadPeople(string& personFile) {
     file >> data;
     file.close();
     this->maxPersonID = 0;
-    for (auto&  peopleData: data) {
+    for (const auto& peopleData : data) {
         unsigned int personID = peopleData["id"];
         this->maxPersonID = max(maxPersonID, personID);
         string name = peopleData["name"];
         string DOB = peopleData["dob"];
-        Person person(name, DOB);
+        vector<unsigned int> moviesStarredIn;
+        vector<unsigned int> moviesDirected;
+        Person person(name, DOB, moviesStarredIn, moviesDirected);
         person.setID(personID);
         people[person.getID()] = person;
     }
 }
-
 //Converts the 2 unordered_maps to JSON format
 void Database::storeMovies(string& movieFile)  {
     json jsonData;
@@ -88,7 +91,6 @@ void Database::storeMovies(string& movieFile)  {
 }
 
 void Database::storePeople(string& personFile) {
-
     json jsonData;
 
     for (auto& pair : people) {
@@ -98,6 +100,8 @@ void Database::storePeople(string& personFile) {
         personData["id"] = person.getID();
         personData["name"] = person.getName();
         personData["DOB"] = person.getDOB();
+        personData["moviesStarredIn"] = person.getMoviesStarred();
+        personData["moviesDirected"] = person.getMoviesDirected();
 
         jsonData.push_back(personData);
     }
@@ -281,7 +285,8 @@ void Database::buildPersonQueries() {
         nameIndex.insert(make_pair(person.getName(), id));
         dobIndex.insert(make_pair(person.getDOB(), id));
     }
-=======
+}
+
 //Converts the actedin, actorsin JSONs to unordered_multimaps
 void Database::loadMoviesToPeople(const string& castFile) {
     ifstream file(castFile);
@@ -339,13 +344,23 @@ void Database::loadPeopleToMovies(const string& starredInFile) {
 //Converts the 2 unordered_maps to JSON format
 void Database::storeMoviesToPeople(const string& castFile) const {
     json jsonData;
-    for (auto& pair : moviesToPeople) {
+
+    // Group peopleIDs by movieID
+    unordered_map<int, vector<int>> groupedPeopleIDs;
+    for (const auto& pair : moviesToPeople) {
         int movieID = pair.first;
-        auto& peopleID = pair.second;
+        int peopleID = pair.second;
+        groupedPeopleIDs[movieID].push_back(peopleID);
+    }
+
+    // Construct the JSON data
+    for (const auto& entry : groupedPeopleIDs) {
+        int movieID = entry.first;
+        const vector<int>& peopleIDs = entry.second;
 
         jsonData.push_back({
             {"movieID", movieID},
-            {"peopleID", peopleID}
+            {"peopleID", peopleIDs}
             });
     }
 
@@ -355,18 +370,28 @@ void Database::storeMoviesToPeople(const string& castFile) const {
         return;
     }
 
-    file << setw(4) << jsonData << endl;
+    file << setw(4) << jsonData.dump(4) << endl;
     cout << "Stored movies to people data in file: " << castFile << endl;
 }
 void Database::storePeopleToMovies(const string& starredInFile) const {
     json jsonData;
-    for (auto& pair : peopleToMovies) {
+
+    // Group movieIDs by peopleID
+    unordered_map<int, vector<int>> groupedMovieIDs;
+    for (const auto& pair : peopleToMovies) {
         int peopleID = pair.first;
-        auto& movieID = pair.second;
+        int movieID = pair.second;
+        groupedMovieIDs[peopleID].push_back(movieID);
+    }
+
+    // Construct the JSON data
+    for (const auto& entry : groupedMovieIDs) {
+        int peopleID = entry.first;
+        const vector<int>& movieIDs = entry.second;
 
         jsonData.push_back({
-            {"PeopleID", peopleID},
-            {"movieID", movieID}
+            {"peopleID", peopleID},
+            {"movieID", movieIDs}
             });
     }
 
@@ -376,6 +401,7 @@ void Database::storePeopleToMovies(const string& starredInFile) const {
         return;
     }
 
-    file << setw(4) << jsonData << endl;
-    cout << "Stored movies to people data in file: " << starredInFile << endl;
+    file << setw(4) << jsonData.dump(4) << endl;
+    cout << "Stored people to movies data in file: " << starredInFile << endl;
 }
+
