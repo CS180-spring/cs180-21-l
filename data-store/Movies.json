@@ -2,11 +2,10 @@
   {
     "id": 1,
     "title": "The Shawshank Redemption",
-    "year": "1994",
+    "year": "1995",
     "rating": 5.0,
-    "genre": [ "Drama", "Crime" ],
+    "genre": ["Drama", "Crime"],
     "director": "Drank Darabont"
-
   },
 
   {
@@ -14,9 +13,8 @@
     "title": "Star Wars: A New Hope",
     "year": "1977",
     "rating": 5.0,
-    "genre": [ "Science Fiction", "Action", "Adventure" ],
+    "genre": ["Science Fiction", "Action", "Adventure"],
     "director": "George Lucas"
-
   },
 
   {
@@ -24,7 +22,7 @@
     "title": "John Wick",
     "year": "2014",
     "rating": 5.0,
-    "genre": [ "Action", "Thriller" ],
+    "genre": ["Action", "Thriller"],
     "director": "Chad Stahelski"
   },
 
@@ -33,9 +31,8 @@
     "title": "The Lord of the Rings: The Fellowship of the Ring",
     "year": "2001",
     "rating": 5.0,
-    "genre": [ "Fantasy", "Adventure" ],
+    "genre": ["Fantasy", "Adventure"],
     "director": "Peter Jackson"
-
   },
 
   {
@@ -43,11 +40,7 @@
     "title": "The Hunger Games",
     "year": "2012",
     "rating": 5.0,
-    "genre": [ "Science Fiction", "Adventure" ],
+    "genre": ["Science Fiction", "Adventure"],
     "director": "Gary Ross"
-
   }
-
 ]
-
-

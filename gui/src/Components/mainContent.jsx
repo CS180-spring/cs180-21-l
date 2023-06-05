@@ -35,25 +35,7 @@ export default function MainContent(props) {
           {props.title}
         </Heading>
         <Pane gap={majorScale(2)} display="flex">
-          <Popover
-            content={
-              <Menu>
-                <Menu.Group>
-                  <Menu.Item icon={PeopleIcon}>Share...</Menu.Item>
-                  <Menu.Item icon={EditIcon}>Edit...</Menu.Item>
-                </Menu.Group>
-                <Menu.Divider />
-                <Menu.Group>
-                  <Menu.Item icon={TrashIcon} intent="danger">
-                    Delete...
-                  </Menu.Item>
-                </Menu.Group>
-              </Menu>
-            }
-          >
-            <Button>Options</Button>
-          </Popover>
-          <Button appearance="primary">Add</Button>
+          <Button appearance="primary">Refresh</Button>
         </Pane>
       </Pane>
       <Pane display="flex" flexDirection="column" width="100%">

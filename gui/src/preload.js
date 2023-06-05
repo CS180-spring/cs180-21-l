@@ -11,4 +11,9 @@ contextBridge.exposeInMainWorld("electronAPI", {
       console.log("data type:", typeof data);
       callback(data);
     }),
+  fileChanged: (callback) =>
+    ipcRenderer.on("file-changed", (event, path) => {
+      console.log("File changed:", path);
+      callback(path);
+    }),
 });

@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const { spawn } = require("child_process");
+const chokidar = require("chokidar");
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -26,7 +27,7 @@ const createWindow = () => {
   });
   ipcMain.on("open-terminal", (event) => {
     // get the path to the current directory
-    const codeDirectory = path.join(__dirname, "..", "..");
+    const codeDirectory = path.join(__dirname, "..", "..", "..");
     console.log("opening terminal at path", codeDirectory);
     //check if a terminal is already open
     //if it is, then open a new tab in the existing terminal
@@ -88,5 +89,16 @@ app.on("activate", () => {
   }
 });
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and import them here.
+//watch for changes in the JSON folder and send a message to the renderer process when a change is detected
+const watcher = chokidar.watch(
+  path.join(__dirname, "..", "..", "..", "/data-store"),
+  {
+    ignored: /(^|[\/\\])\../, // Ignore dotfiles
+    persistent: true,
+  }
+);
+
+watcher.on("change", (path) => {
+  console.log("change detected at path", path);
+  //mainWindow.webContents.send("fileChanged", path);
+});

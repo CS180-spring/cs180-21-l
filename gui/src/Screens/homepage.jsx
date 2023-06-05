@@ -7,6 +7,7 @@ import {
   IconButton,
   ThemeProvider,
   defaultTheme,
+  CornerDialog,
 } from "evergreen-ui";
 
 import { merge } from "lodash";
@@ -24,6 +25,7 @@ const myTheme = merge({}, defaultTheme, {
 
 export default function Homepage() {
   const [content, setContent] = React.useState(<EmptyMain />);
+  const [dialogShown, setDialogShown] = React.useState(false);
 
   function handleContent(name, desp) {
     setContent(<MainContent title={name} description={desp} />);
@@ -67,8 +69,18 @@ export default function Homepage() {
                 marginRight={minorScale(2)}
                 onClick={() => {
                   window.electronAPI.openTerminal();
+                  setDialogShown(true);
                 }}
               />
+              <CornerDialog
+                title="Terminal Opened"
+                isShown={dialogShown}
+                onCloseComplete={() => setDialogShown(false)}
+                hasFooter={false}
+              >
+                Terminal has been opened in a new window and is navigated to the
+                root of the C++ project.
+              </CornerDialog>
             </Pane>
           </Pane>
         </Pane>

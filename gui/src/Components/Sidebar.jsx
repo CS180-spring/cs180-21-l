@@ -46,21 +46,6 @@ export default function Sidebar({ contentChange }) {
         </Heading>
       </Pane>
       <Pane
-        id="Document Buttons"
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        width="100%"
-      >
-        <IconButton icon={RefreshIcon} marginRight={majorScale(2)} />
-        <IconButton icon={EditIcon} marginRight={majorScale(2)} />
-        <IconButton
-          icon={TrashIcon}
-          intent="danger"
-          marginRight={majorScale(2)}
-        />
-      </Pane>
-      <Pane
         display="flex"
         flexDirection="row"
         alignItems="baseline"
