@@ -1,6 +1,6 @@
 #include "File.h"
 
-void File::saveDatabase(const string& movieFile, const string& personFile, 
+void File::saveDatabase(string movieFile,string personFile, 
 	const string& castFile, const string& starredInFile, Database& db) {
 	db.storeMovies(movieFile);
 	db.storePeople(personFile);
@@ -10,7 +10,7 @@ void File::saveDatabase(const string& movieFile, const string& personFile,
 
 
 
-void File::loadDatabase(const std::string& movieFile, const string& personFile, 
+void File::loadDatabase(std::string movieFile,string personFile, 
 	const string& castFile, const string& starredInFile, Database& db) {
 	db.loadMovies(movieFile);
 	db.loadPeople(personFile);

@@ -26,7 +26,7 @@ string Person::getDOB() {
     return this->DOB;
 }
 
-vector<unsigned int> Person::getMovesStarred() {
+vector<unsigned int> Person::getMoviesStarred() {
     return this->moviesStarredIn;
 }
 
@@ -34,7 +34,7 @@ vector<unsigned int> Person::getMoviesDirected() {
     return this->moviesDirected;
 }
  
-void Person::setID(int id) {
+void Person::setID(unsigned int id) {
     this->personID = id;
 }
 
