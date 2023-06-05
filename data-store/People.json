@@ -1,0 +1,72 @@
+[
+    {
+        "DOB": "1986-09-12",
+        "id": 10,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Alfie Allen"
+    },
+    {
+        "DOB": "1990-08-15",
+        "id": 9,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Jennifer Lawrence"
+    },
+    {
+        "DOB": "1977-01-13",
+        "id": 8,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Orlando Bloom"
+    },
+    {
+        "DOB": "1939-05-25",
+        "id": 7,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Ian McKellen"
+    },
+    {
+        "DOB": "1955-07-22",
+        "id": 6,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Willem Dafoe"
+    },
+    {
+        "DOB": "1964-09-02",
+        "id": 5,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Keanu Reeves"
+    },
+    {
+        "DOB": "1951-09-25",
+        "id": 4,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Mark Hamill"
+    },
+    {
+        "DOB": "1937-06-01",
+        "id": 3,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Morgan Freeman"
+    },
+    {
+        "DOB": "1958-10-16",
+        "id": 2,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Tim Robbins"
+    },
+    {
+        "DOB": "1958-10-16",
+        "id": 1,
+        "moviesDirected": [],
+        "moviesStarredIn": [],
+        "name": "Tim Robbins"
+    }
+]

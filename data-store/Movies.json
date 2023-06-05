@@ -1,0 +1,68 @@
+[
+    {
+        "director": "Pokemon Company",
+        "genre": [
+            "Anime"
+        ],
+        "id": 0,
+        "rating": 4.0,
+        "title": "Pokemon: The First Movie",
+        "year": "2000"
+    },
+    {
+        "director": "Gary Ross",
+        "genre": [
+            "Science Fiction",
+            "Adventure"
+        ],
+        "id": 5,
+        "rating": 5.0,
+        "title": "The Hunger Games",
+        "year": "2012"
+    },
+    {
+        "director": "Peter Jackson",
+        "genre": [
+            "Fantasy",
+            "Adventure"
+        ],
+        "id": 4,
+        "rating": 5.0,
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "year": "2001"
+    },
+    {
+        "director": "Chad Stahelski",
+        "genre": [
+            "Action",
+            "Thriller"
+        ],
+        "id": 3,
+        "rating": 5.0,
+        "title": "John Wick",
+        "year": "2014"
+    },
+    {
+        "director": "George Lucas",
+        "genre": [
+            "Science Fiction",
+            "Action",
+            "Adventure"
+        ],
+        "id": 2,
+        "rating": 5.0,
+        "title": "Star Wars: A New Hope",
+        "year": "1977"
+    },
+    {
+        "director": "Drank Darabont",
+        "genre": [
+            "Drama",
+            "Crime"
+        ],
+        "id": 1,
+        "rating": 5.0,
+        "title": "The Shawshank Redemption",
+        "year": "1995"
+    }
+]
