@@ -8,6 +8,7 @@ import {
   ThemeProvider,
   defaultTheme,
   CornerDialog,
+  toaster,
 } from "evergreen-ui";
 
 import { merge } from "lodash";
@@ -26,6 +27,14 @@ const myTheme = merge({}, defaultTheme, {
 export default function Homepage() {
   const [content, setContent] = React.useState(<EmptyMain />);
   const [dialogShown, setDialogShown] = React.useState(false);
+
+  const handleFileChange = React.useCallback((name) => {
+    toaster.notify(name + " has been changed!");
+  }, []);
+
+  React.useEffect(() => {
+    window.electronAPI.fileChanged(handleFileChange);
+  }, [handleFileChange]);
 
   function handleContent(name, desp) {
     setContent(<MainContent title={name} description={desp} />);
@@ -79,7 +88,12 @@ export default function Homepage() {
                 hasFooter={false}
               >
                 Terminal has been opened in a new window and is navigated to the
-                root of the C++ project.
+                root of the C++ project. To run the C++ program, enter the
+                following command in the terminal:
+                <br />
+                <code>./movie_database</code>
+                <br />
+                If there are any errors please run make clean and make again.
               </CornerDialog>
             </Pane>
           </Pane>

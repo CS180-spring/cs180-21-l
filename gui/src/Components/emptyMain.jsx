@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Pane, Text, EmptyState, ListDetailViewIcon } from "evergreen-ui";
+import { EmptyState, ListDetailViewIcon } from "evergreen-ui";
 
 // This is a placeholder component for the main content area
 // Represents the main content area of the application when no document is open

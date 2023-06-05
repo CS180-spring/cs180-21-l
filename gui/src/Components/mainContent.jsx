@@ -1,20 +1,21 @@
 import * as React from "react";
-import {
-  Button,
-  Pane,
-  Text,
-  majorScale,
-  Heading,
-  Menu,
-  Popover,
-  PeopleIcon,
-  EditIcon,
-  TrashIcon,
-} from "evergreen-ui";
+import { Button, Pane, Text, majorScale, Heading, toaster } from "evergreen-ui";
 import DataTable from "./dataTable";
+import { useJSONFilePath } from "../Contexts/JSONFilePathContext";
 
 export default function MainContent(props) {
+  const { filePath, setFilePath } = useJSONFilePath();
   window.electronAPI.setTitle(props.title);
+
+  function handleRefresh() {
+    toaster.notify("Refreshing data...");
+    if (filePath !== "" && filePath !== null) {
+      window.electronAPI.readFile(filePath);
+    }
+  }
+  function handleDataTableRefresh() {
+    handleRefresh();
+  }
 
   return (
     <Pane
@@ -35,7 +36,14 @@ export default function MainContent(props) {
           {props.title}
         </Heading>
         <Pane gap={majorScale(2)} display="flex">
-          <Button appearance="primary">Refresh</Button>
+          <Button
+            appearance="primary"
+            onClick={() => {
+              handleRefresh();
+            }}
+          >
+            Refresh
+          </Button>
         </Pane>
       </Pane>
       <Pane display="flex" flexDirection="column" width="100%">
@@ -47,7 +55,7 @@ export default function MainContent(props) {
         width="100%"
         marginTop={majorScale(4)}
       >
-        <DataTable />
+        <DataTable refresh={handleDataTableRefresh} />
       </Pane>
     </Pane>
   );

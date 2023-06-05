@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Table, EmptyState, DatabaseIcon, toaster } from "evergreen-ui";
+import { Table, toaster } from "evergreen-ui";
 import { useJSONFilePath } from "../Contexts/JSONFilePathContext";
 
-export default function DataTable() {
+export default function DataTable({ refresh }) {
+  const [searchQuery, setSearchQuery] = React.useState("");
   const { filePath, setFilePath } = useJSONFilePath();
   const [fileData, setFileData] = React.useState(null);
   const [sorting, setSorting] = React.useState({
@@ -66,12 +67,25 @@ export default function DataTable() {
     return [];
   };
 
-  const sortedData = sortData();
+  const handleRefresh = () => {
+    refresh(); // Call the refresh prop function to re-read the JSON file
+  };
+
+  const sortedData = sortData().filter((row) => {
+    return Object.values(row).some(
+      (value) =>
+        String(value).toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1
+    );
+  });
 
   return (
     <Table>
       <Table.Head>
-        <Table.SearchHeaderCell placeholder="Search Items..." />
+        <Table.SearchHeaderCell
+          placeholder="Search Items..."
+          onChange={(e) => setSearchQuery(e)}
+          value={searchQuery}
+        />
       </Table.Head>
       <Table.Head>
         {fileData &&
@@ -103,14 +117,3 @@ export default function DataTable() {
     </Table>
   );
 }
-
-/*
-        <EmptyState
-          background="light"
-          title="No Data in this Document"
-          orientation="horizontal"
-          icon={<DatabaseIcon color="#C1C4D6" />}
-          iconBgColor="#EDEFF5"
-          description="This document is empty. Add some data to it!"
-        />
-*/

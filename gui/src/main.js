@@ -65,6 +65,24 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+  //watch for changes in the JSON folder and send a message to the renderer process when a change is detected
+  const watcher = chokidar.watch(
+    path.join(__dirname, "..", "..", "..", "/data-store"),
+    {
+      ignored: /(^|[\/\\])\../, // Ignore dotfiles
+      persistent: true,
+    }
+  );
+
+  watcher.on("change", (path) => {
+    console.log("change detected at path", path);
+    //edit the path to only include the JSON file name
+    path = path.split("/");
+    path = path[path.length - 1];
+    console.log("sending fileChanged message to renderer process");
+    mainWindow.webContents.send("file-changed", path);
+  });
 };
 
 // This method will be called when Electron has finished
@@ -87,18 +105,4 @@ app.on("activate", () => {
   if (BrowserWindow.getAllWindows().length === 0) {
     createWindow();
   }
-});
-
-//watch for changes in the JSON folder and send a message to the renderer process when a change is detected
-const watcher = chokidar.watch(
-  path.join(__dirname, "..", "..", "..", "/data-store"),
-  {
-    ignored: /(^|[\/\\])\../, // Ignore dotfiles
-    persistent: true,
-  }
-);
-
-watcher.on("change", (path) => {
-  console.log("change detected at path", path);
-  //mainWindow.webContents.send("fileChanged", path);
 });
