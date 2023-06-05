@@ -1,14 +1,15 @@
 #include <iostream>
 #include <sstream>
 #include "File.h"
-// Still need all other functions header files and cpp 
+// Still need all other functions header files and cpp
 
 using namespace std;
 
-int main() {
+int main()
+{
     Database myDb;
     File myFile;
-    myFile.loadDatabase("Movies.json", "People.json", "ActorFilms.json", "MovieCast.json", myDb);
+    myFile.loadDatabase("data-store/Movies.json", "data-store/People.json", "data-store/ActorFilms.json", "data-store/MovieCast.json", myDb);
 
     int mainChoice = 0;
     int userChoice = 0;
@@ -20,13 +21,16 @@ int main() {
     cout << "1. Perform CRUD operations for the database." << endl;
     cout << "2. Quit" << endl;
     cin >> mainChoice;
-    if (mainChoice == 2) {
+    if (mainChoice == 2)
+    {
         return 0;
     }
-    else {
-        bool shouldContinue = true;  // Control variable to determine when to return to the main menu
+    else
+    {
+        bool shouldContinue = true; // Control variable to determine when to return to the main menu
 
-        while (shouldContinue) {
+        while (shouldContinue)
+        {
             cout << "What would you like to do?" << endl;
             cout << "--------------------------------" << endl;
             cout << "1. Add a movie to the database." << endl;
@@ -44,8 +48,10 @@ int main() {
             cin >> userChoice;
             cin.ignore(); // Ignore the newline character
 
-            switch (userChoice) {
-            case 1: {
+            switch (userChoice)
+            {
+            case 1:
+            {
                 string title, director, year;
                 double rating;
                 vector<string> genre;
@@ -66,7 +72,8 @@ int main() {
                 getline(cin, genreInput);
                 stringstream ss(genreInput);
                 string genreToken;
-                while (getline(ss, genreToken, ',')) {
+                while (getline(ss, genreToken, ','))
+                {
                     genre.push_back(genreToken);
                 }
 
@@ -75,7 +82,8 @@ int main() {
                 myDb.insertMovie(movie);
                 break;
             }
-            case 2: {
+            case 2:
+            {
                 string name, dob;
 
                 // Prompt the user for person details
@@ -92,7 +100,8 @@ int main() {
                 myDb.insertPerson(person);
                 break;
             }
-            case 3: {
+            case 3:
+            {
                 unsigned int movieID;
 
                 // Prompt the user for the movie ID to delete
@@ -103,7 +112,8 @@ int main() {
                 myDb.removeMovie(movieID);
                 break;
             }
-            case 4: {
+            case 4:
+            {
                 unsigned int personID;
 
                 // Prompt the user for the person ID to delete
@@ -114,7 +124,8 @@ int main() {
                 myDb.removePerson(personID);
                 break;
             }
-            case 5: {
+            case 5:
+            {
                 unsigned int movieID;
                 string newTitle;
 
@@ -129,7 +140,8 @@ int main() {
                 myDb.updateMovieTitle(movieID, newTitle);
                 break;
             }
-            case 6: {
+            case 6:
+            {
                 unsigned int movieID;
                 string newDate;
                 cout << "Enter the movie ID: ";
@@ -139,17 +151,20 @@ int main() {
                 cin.ignore();
                 getline(cin, newDate);
 
-                if (myDb.movies.find(movieID) != myDb.movies.end()) {
+                if (myDb.movies.find(movieID) != myDb.movies.end())
+                {
                     myDb.updateMovieDate(movieID, newDate);
                     cout << "Movie release date updated successfully." << endl;
                 }
-                else {
+                else
+                {
                     cout << "Movie not found in the database." << endl;
                 }
                 break;
             }
 
-            case 7: {
+            case 7:
+            {
                 unsigned int movieID;
                 double newRating;
                 cout << "Enter the movie ID: ";
@@ -157,17 +172,20 @@ int main() {
                 cout << "Enter the new rating: ";
                 cin >> newRating;
 
-                if (myDb.movies.find(movieID) != myDb.movies.end()) {
+                if (myDb.movies.find(movieID) != myDb.movies.end())
+                {
                     myDb.updateMovieRating(movieID, newRating);
                     cout << "Movie rating updated successfully." << endl;
                 }
-                else {
+                else
+                {
                     cout << "Movie not found in the database." << endl;
                 }
                 break;
             }
 
-            case 8: {
+            case 8:
+            {
                 unsigned int personID;
                 string newName;
                 cout << "Enter the person ID: ";
@@ -176,17 +194,20 @@ int main() {
                 cout << "Enter the new name: ";
                 getline(cin, newName);
 
-                if (myDb.people.find(personID) != myDb.people.end()) {
+                if (myDb.people.find(personID) != myDb.people.end())
+                {
                     myDb.updatePersonName(personID, newName);
                     cout << "Person's name updated successfully." << endl;
                 }
-                else {
+                else
+                {
                     cout << "Person not found in the database." << endl;
                 }
                 break;
             }
 
-            case 9: {
+            case 9:
+            {
                 unsigned int personID;
                 string newDOB;
                 cout << "Enter the person ID: ";
@@ -195,11 +216,13 @@ int main() {
                 cout << "Enter the new date of birth: ";
                 getline(cin, newDOB);
 
-                if (myDb.people.find(personID) != myDb.people.end()) {
+                if (myDb.people.find(personID) != myDb.people.end())
+                {
                     myDb.updatePersonDOB(personID, newDOB);
                     cout << "Person's date of birth updated successfully." << endl;
                 }
-                else {
+                else
+                {
                     cout << "Person not found in the database." << endl;
                 }
                 break;
@@ -217,7 +240,7 @@ int main() {
         }
     }
 
-    myFile.saveDatabase("Movies1.json", "People1.json", "ActorFilms1.json", "MovieCast1.json", myDb);
+    myFile.saveDatabase("data-store/Movies.json", "data-store/People.json", "data-store/ActorFilms.json", "data-store/MovieCast.json", myDb);
 
     return 0;
 }
